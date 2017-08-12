@@ -1,0 +1,14 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                       controllers.HomeController.index
+GET     /fetchtweetsforday      controllers.TwitterController.getDailyTweets(tweetDate: String)
+GET     /approvetweet          controllers.TwitterController.approveTweet(tweetId: Long, tweetDate: String)
+GET     /rejecttweet           controllers.TwitterController.rejectTweet(tweetId: Long, tweetDate: String)
+
+GET     /approvedtweets         controllers.TwitterController.getApprovedTweets(tweetDate: String)
+GET     /rejectedtweets         controllers.TwitterController.getRejectedTweets(tweetDate: String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

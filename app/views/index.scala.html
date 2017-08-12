@@ -1,0 +1,51 @@
+
+@main("Content Moderator", false) {
+
+<div class="container">
+ <br>
+ <img style="float: right;" src="@routes.Assets.versioned("images/Moderator_badge.png")" width="180" height="180" alt="Witty Title Moderator"/>
+    <br>
+
+  <div class="card" style="width: 20rem;">
+    <div class="card-header">
+      <h6>Tweets for day </h6>
+    </div>
+    <div class="card-block">
+      <form class="form-inline" method="get" action="/fetchtweetsforday">
+        <div class="form-group">
+          <input id="tweetDate" class="form-control" name="tweetDate" placeholder="Tweets YYYY-MM-DD" type="date" required/>
+        </div>
+        <button class="btn btn-primary" type="submit">Go</button>
+      </form>
+    </div>
+  </div>
+  <div class="card" style="width: 20rem;">
+    <div class="card-header">
+      <h6>Approved tweets for day </h6>
+    </div>
+    <div class="card-block">
+      <form class="form-inline" method="get" action="/approvedtweets">
+        <div class="form-group">
+          <input id="tweetDate" class="form-control" name="tweetDate" placeholder="Approved YYYY-MM-DD" type="date" required/>
+        </div>
+        <button class="btn btn-primary" type="submit">Go</button>
+      </form>
+    </div>
+  </div>
+  <div class="card" style="width: 20rem;">
+    <div class="card-header">
+      <h6>Rejected tweets for day </h6>
+    </div>
+    <div class="card-block">
+      <form class="form-inline" method="get" action="/rejectedtweets">
+        <div class="form-group">
+          <input id="tweetDate" class="form-control" name="tweetDate" placeholder="Rejected YYYY-MM-DD" type="date" required/>
+        </div>
+        <button class="btn btn-primary" type="submit">Go</button>
+      </form>
+    </div>
+  </div>
+
+    <br/>
+</div>
+}

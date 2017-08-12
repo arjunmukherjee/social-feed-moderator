@@ -1,0 +1,79 @@
+@import com.social.twitter.Tweet
+@import com.social.sentiment.Sentiment.Sentiment
+@(tweetsList: List[Tweet], tweetDate: String, approvedSetOption: Option[scala.collection.mutable.Set[String]], rejectedSetOption: Option[scala.collection.mutable.Set[String]], numberUnActioned: Int)
+
+@main("Content Moderator", true) {
+
+<div class="container">
+
+    <br>
+    <h4>@tweetsList.length tweets for @tweetDate, <font color="red">@numberUnActioned</font> un-actioned</h4>
+    <br>
+
+  <div class="card-columns">
+    @for(tweet <- tweetsList){
+    <div class="card" style="width: 20rem;">
+      <div class="card-header">
+        <a href="@tweet.userURL"><font size="2">@@@tweet.userName</font> </a>
+        @if(tweet.sentiment == "POSITIVE"){
+          <img align="right" src="@routes.Assets.versioned("images/happy-face.png")" style="width:20px;height:20px;">
+        }
+        @if(tweet.sentiment == "NEGATIVE"){
+          <img align="right" src="@routes.Assets.versioned("images/sad-face.png")" style="width:20px;height:20px;">
+        }
+        @if(tweet.sentiment == "NEUTRAL"){
+          <img align="right" src="@routes.Assets.versioned("images/neutral-face.png")" style="width:20px;height:20px;">
+        }
+      </div>
+      <div class="card-block">
+        <p class="card-text"> <font size="2">@tweet.text</font>
+          @for(urlEntity <- tweet.urlList){
+          <a href="@urlEntity.getExpandedURL"><img src="@routes.Assets.versioned("images/link.png")" style="width:30px;height:20px;"></a>
+          }
+          <br>
+          @for(mediaEntity <- tweet.attachmentList){
+          <img src="@mediaEntity.getMediaURL" style="width:260px;height:210px;">
+          <br>
+          }
+        </p>
+        <table>
+          <tr>
+            @if(approvedSetOption.isDefined && approvedSetOption.get.exists(_.toLong == tweet.id)){
+            <td>
+              <button class="btn btn-primary disabled" align="left">Approved</button>
+            </td>
+            } else {
+            @if(rejectedSetOption.isDefined && rejectedSetOption.get.exists(_.toLong == tweet.id)){
+            <td>
+              <button class="btn btn-primary disabled" type="submit" align="left">Rejected</button>
+            </td>
+            } else{
+            <td>
+              <form class="form-inline" method="get" action="/approvetweet">
+                <input id="tweetId" class="form-control" name="tweetId" type="hidden" value="@tweet.id" />
+                <input id="tweetDate" class="form-control" name="tweetDate" type="hidden" value="@tweetDate" />
+                <button class="btn btn-success" type="submit" align="left">Approve</button>
+              </form>
+            </td>
+            <td> &nbsp;
+            </td>
+            <td>
+              <form class="form-inline" method="get" action="/rejecttweet">
+                <input id="tweetId" class="form-control" name="tweetId" type="hidden" value="@tweet.id" />
+                <input id="tweetDate" class="form-control" name="tweetDate" type="hidden" value="@tweetDate" />
+                <button class="btn btn-danger" type="submit" align="left">Reject</button>
+              </form>
+            </td>
+            }
+            }
+
+          </tr>
+        </table>
+      </div>
+    </div>
+    }
+  </div>
+
+
+</div>
+}

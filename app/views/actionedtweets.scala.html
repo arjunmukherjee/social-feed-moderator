@@ -1,0 +1,17 @@
+@(action: String, tweetsListOption: Option[scala.collection.mutable.Set[String]], tweetDate: String)
+
+@main("Content Moderator", true) {
+
+<div class="container">
+    <br>
+    <h2>@action tweets for @tweetDate</h2>
+    <br>
+    <table class="table-striped">
+    @if(tweetsListOption.isDefined){
+        @for(tweet <- tweetsListOption.get){
+            <tr><td>@tweet</td></tr>
+        }
+    }
+    </table>
+</div>
+}
