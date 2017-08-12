@@ -1,8 +1,8 @@
 Social media content moderator (with sentiment analysis)
 =================================
-Currently : 
+#### Current
   - Twitter integration : will pull down the tweets from twitter relevant to the query string, will attempt to analyse the text to figure out the sentiment.
-Future :
+#### Future
   - Facebook
   - Instagram
   - User defined
