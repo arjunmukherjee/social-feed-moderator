@@ -1,5 +1,8 @@
 Social media content moderator (with sentiment analysis)
 =================================
+![About](https://github.com/arjunmukherjee/social-feed-moderator/blob/master/public/images/about.png)
+
+
 #### Current
   - Twitter integration : will pull down the tweets from twitter relevant to the query string, will attempt to analyse the text to figure out the sentiment.
 #### Future
