@@ -24,4 +24,6 @@ Ensure you have the following environment/config variables set. You can set this
 - `sbt run`
 - check `http://localhost:9000` on your favorite browser
 
+![Main Page](https://github.com/arjunmukherjee/social-feed-moderator/blob/master/public/images/mainpage.png)
+![Tweet Page](https://github.com/arjunmukherjee/social-feed-moderator/blob/master/public/images/tweetpage.png)
 
